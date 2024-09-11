@@ -12,12 +12,6 @@ namespace gyakorlat02
 
 		static void Main(string[] args)
 		{
-			Dictionary<int, int> monthCounts = new Dictionary<int, int>();
-
-			for (int i = 1; i <= 2; i++)
-			{
-				monthCounts[i] = 0;
-			}
 
 			Ember e1 = new Ember("Jancsi", "1920.02.02", "Erdő széle");
 			Ember e2 = new Ember("Juliska", "1922.09.11", "Erdő széle");
@@ -43,6 +37,19 @@ namespace gyakorlat02
 			emberek.Add(e3);
 
             Console.WriteLine(emberek);
+
+            int szuletettekSzama = emberek.SzuletettHo(9);  // 9. hónap (szeptember)
+            Console.WriteLine($"Szeptemberben születettek száma: {szuletettekSzama}");
+
+            double atlagEletkor = emberek.AtlagEletkor();
+            Console.WriteLine($"Átlagos életkor: {atlagEletkor:F2} év");
+
+            string legfiatalabbNev = emberek.LegfiatalabbEmber();
+            Console.WriteLine($"Legfiatalabb ember neve: {legfiatalabbNev}");
+
+            int legidosebbIndex = emberek.LegidosebbEmberSorszam();
+            Console.WriteLine($"Legidősebb ember sorszáma: {legidosebbIndex}");
+
 
             Console.WriteLine("\n--------------------------------------------------");
 

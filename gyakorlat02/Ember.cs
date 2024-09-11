@@ -15,6 +15,8 @@ namespace gyakorlat02
 		private string nev;
 		private string szulDatum;
 		private string szulHely;
+		private double testTomeg; // kg
+		private double magassag;  // cm
 
 		//2. konstruktor
 		public Ember(string nev, string szulDatum, string szulHely)
@@ -27,6 +29,7 @@ namespace gyakorlat02
 		public string Nev { get => nev; set => nev = value; }
 		public string SzulDatum { get => szulDatum; }
 		public string SzulHely { get => szulHely; }
+
 		public int SzulEv
 
 		{
@@ -71,15 +74,15 @@ namespace gyakorlat02
 			return aktEv - SzulEv;
 		}
 
-
-
-
-
-
-		//5. ToString
-		public override string ToString()
+		public double BMI()
 		{
-			return $"{this.nev} {this.szulDatum} {this.szulHely} ";
+			return testTomeg / ((magassag / 100) * (magassag / 100));
 		}
-	}
+
+        public override string ToString()
+        {
+            return $"{nev}, {szulDatum}, {szulHely}";
+        }
+
+    }
 }

@@ -12,8 +12,6 @@ namespace gyakorlat02
 	internal class Emberek
 	{
 
-
-
 	//adattag
 	private List<Ember> lista;
 		//konstruktor
@@ -40,11 +38,11 @@ namespace gyakorlat02
 					Add(e);
 				}
 
-
 			}
 			catch (Exception ex)
 			{
-			}
+                Console.WriteLine(ex.Message);
+            }
 		}
 
 
@@ -68,7 +66,64 @@ namespace gyakorlat02
 
 		//5. feladat
 		
+		public int SzuletettHo(int honap)
+		{
+			int count = 0;
+            foreach (Ember ember in lista)
+            {
+                if (ember.SzulHo == honap)
+                {
+					count++;
+                }
+            }
+			return count;
+        }
+
+		public double AtlagEletkor()
+		{
+			int osszesEletkor = 0;
+            foreach (Ember ember in lista)
+            {
+				osszesEletkor += ember.Eletkor();
+            }
+			return (double)osszesEletkor / lista.Count;
+        }
+
+		public double AtlagBMI()
+		{
+			double osszesBMI = 0;
+            foreach (Ember ember in lista)
+            {
+				osszesBMI += ember.BMI();
+            }
+			return osszesBMI / lista.Count;
+        }
 
 
+		public string LegfiatalabbEmber()
+		{
+			Ember legfiatalabb = lista[0];
+            foreach (Ember ember in lista)
+            {
+                if (ember.Eletkor() < legfiatalabb.Eletkor())
+                {
+                    legfiatalabb = ember;
+                }
+            }
+			return legfiatalabb.Nev;
+        }
+
+		public int LegidosebbEmberSorszam()
+		{
+			int index = 0;
+			for (int i = 1; i < lista.Count; i++)
+			{
+				if (lista[i].Eletkor() > lista[index].Eletkor())
+				{
+					index = i;
+				}
+			}
+			return index;
+		}
 	}
 }
